@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    /* This ensures that w-full + px-6 = 100% viewport width */
+    box-sizing: border-box =100%;
+    width:100 vh 
+  }
+}
+
+body {
+    /* THIS IS THE FASTEST WAY TO HIDE THE WHITE GAP/SCROLLBAR */
+    overflow-x: hidden; 
+}
+
+.mobile-menu {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.mobile-menu.open {
+  max-height: 100%; /* big enough to show full content */
+  opacity: 1;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+/* Remove white space on left/right side */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Make section/image full width */
+.hero-section {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* If background image is used */
+.hero-section {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Ensure content fits properly */
+.container, .content {
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
