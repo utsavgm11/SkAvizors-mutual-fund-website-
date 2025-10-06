@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { assets, infoList } from '@/data/assets';
 
 // ✅ Correct way for images stored in public/images folder
-const userImage = '/images/shrikant-vertical.jpg';
+const userImage = '/images/shrikant-vertical.JPG';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -114,3 +114,4 @@ const About = () => {
 };
 
 export default About;
+
