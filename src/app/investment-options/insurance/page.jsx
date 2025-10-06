@@ -103,7 +103,7 @@ const InsurancePlanningPage = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
                     <div className="relative overflow-hidden rounded-xl shadow-2xl h-48 sm:h-64 lg:h-80 bg-blue-600">
                         <img
-                            src="/images/insurance1.jpg"
+                            src="/images/Insurance1.jpg"
                             alt="Visual representing Life and Health Insurance coverage and protection"
                             className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
                             loading="lazy"
@@ -230,5 +230,6 @@ const InsurancePlanningPage = () => {
         </>
     );
 };
+
 
 export default InsurancePlanningPage;
