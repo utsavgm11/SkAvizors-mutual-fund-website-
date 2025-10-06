@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { assets, infoList } from '@/data/assets';
 
+// ✅ Correct way for images stored in public/images folder
+const userImage = '/images/shrikant-vertical.jpg';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -18,15 +20,15 @@ const containerVariants = {
 
 const cardHoverVariants = {
   rest: {
-    backgroundColor: "#ffffff",
-    color: "#1f2937",
-    boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+    backgroundColor: '#ffffff',
+    color: '#1f2937',
+    boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
     transition: { duration: 0.3, ease: 'easeInOut' },
   },
   hover: {
-    background: "linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%)",
-    color: "#ffffff",
-    boxShadow: "0 8px 20px rgba(255, 126, 95, 0.6)",
+    background: 'linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%)',
+    color: '#ffffff',
+    boxShadow: '0 8px 20px rgba(255, 126, 95, 0.6)',
     transition: { duration: 0.4, ease: 'easeInOut' },
   },
 };
@@ -61,17 +63,16 @@ const About = () => {
           className="w-full md:w-[40%] md:flex md:justify-center md:h-full"
         >
           <Image
-  src="/images/user_image.png"
-  alt="Portfolio portrait"
-  width={384}
-  height={526}
-  className="rounded-3xl object-cover"
-  priority
-/>
-
+            src={userImage}
+            alt="Portfolio portrait"
+            width={384}
+            height={526}
+            className="rounded-3xl object-cover"
+            priority
+          />
         </motion.div>
 
-        {/* RIGHT: Single paragraph + info cards */}
+        {/* RIGHT: Text + Info Cards */}
         <motion.div
           variants={fadeInUp}
           className="md:w-[80%] flex flex-col justify-between bg-white bg-opacity-70 backdrop-blur-md rounded-xl p-8 md:p-12 shadow-lg"
@@ -81,7 +82,10 @@ const About = () => {
             variants={fadeInUp}
             className="text-neutral-700 text-lg font-medium leading-relaxed mb-10"
           >
-            Empowering Financial Growth with Trust, Strategy, and Results. At S K Advizors, financial advice is about building trust and enabling confident steps toward financial goals. Founded by <span className="font-semibold text-orange-600">Shrikant Krishna</span> in 2018, we’ve grown to manage <span className="text-blue-700 font-bold">300+ clients</span> and more than <span className="font-bold text-orange-600">1000 active mutual fund folios</span>. Our mission is to deliver unbiased, strategic financial guidance — helping clients build and protect long-term wealth with personalized, practical solutions. Together, we’ll grow your wealth with clarity, trust, and results.
+            Empowering Financial Growth with Trust, Strategy, and Results. At S K Advizors, financial advice is about building trust and enabling confident steps toward financial goals. Founded by{' '}
+            <span className="font-semibold text-orange-600">Shrikant Krishna</span> in 2018, we’ve grown to manage{' '}
+            <span className="text-blue-700 font-bold">300+ clients</span> and more than{' '}
+            <span className="font-bold text-orange-600">1000 active mutual fund folios</span>. Our mission is to deliver unbiased, strategic financial guidance — helping clients build and protect long-term wealth with personalized, practical solutions. Together, we’ll grow your wealth with clarity, trust, and results.
           </motion.p>
 
           <motion.div
@@ -110,4 +114,3 @@ const About = () => {
 };
 
 export default About;
-
