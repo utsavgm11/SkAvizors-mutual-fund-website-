@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { assets, infoList } from '@/data/assets';
 
+
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
@@ -60,13 +61,14 @@ const About = () => {
           className="w-full md:w-[40%] md:flex md:justify-center md:h-full"
         >
           <Image
-            src={assets.user_image}
-            alt="Portfolio portrait"
-            width={384}
-            height={526}
-            className="rounded-3xl object-cover"
-            priority
-          />
+  src="/images/user_image.png"
+  alt="Portfolio portrait"
+  width={384}
+  height={526}
+  className="rounded-3xl object-cover"
+  priority
+/>
+
         </motion.div>
 
         {/* RIGHT: Single paragraph + info cards */}
@@ -108,3 +110,4 @@ const About = () => {
 };
 
 export default About;
+
