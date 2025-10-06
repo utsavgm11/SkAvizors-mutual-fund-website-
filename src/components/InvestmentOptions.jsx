@@ -19,7 +19,7 @@ const options = [
         id: 2,
         title: "Insurance",
         description: "Financial protection and future security for you and your family.",
-        image: "/images/insurance.jpg",
+        image: "/images/Insurance.jpg",
         link: "/investment-options/insurance",
     },
     {
@@ -54,14 +54,14 @@ const options = [
         id: 7,
         title: "Smallcase",
         description: "Curated stock portfolios built around themes and market trends.",
-        image: "/images/small case.jpg",
+        image: "/images/Small case.jpg",
         link: "/investment-options/smallcase",
     },
     {
         id: 8,
         title: "Liquiloans",
         description: "Innovative lending products with attractive fixed returns.",
-        image: "/images/liquiloans.webp",
+        image: "/images/Liquiloans.webp",
         link: "/investment-options/liquiloans",
     },
 ];
@@ -258,3 +258,4 @@ const InvestmentOptions = () => {
 };
 
 export default InvestmentOptions;
+
