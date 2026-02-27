@@ -31,11 +31,11 @@ const testimonials = [
       "Excellent support and guidance on sip clear communication and smooth process always available for guidance ,Bangalore",
   },
   {
-    img: "/assets/img/testimonials/testimonials-4.jpg",
-    name: "Matt Brandon",
-    role: "Web Consultant",
+    img: "/images/testimonials-4.png",
+    name: "Shivani Narang",
+    role: "Burnout Recovery Coach",
     text:
-      "Integrating Tableau with the website was seamless. The result is a professional, responsive platform that presents complex data beautifully.",
+      "Shrikant introduced me to mutual funds and SIPs and helped me choose the right investments for my goals. He is responsive and always provides the data needed to make informed decisions.",
   },
   {
     img: "/assets/img/testimonials/testimonials-5.jpg",

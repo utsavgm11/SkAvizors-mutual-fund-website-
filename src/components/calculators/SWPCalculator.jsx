@@ -20,7 +20,7 @@ function Tooltip({ text }) {
   );
 }
 
-const SIPCalculator = ({
+const SWPCalculator = ({
   inputMode,
   inputData = {},
   onInputChange,
@@ -28,20 +28,22 @@ const SIPCalculator = ({
   accentColor = "text-orange-500"
 }) => {
   const {
-    investmentAmount = 0, // Now treated as Monthly SIP
-    expectedInterestRate = 0,
-    durationYears = 0,
+    investmentAmount = 0, // Total initial investment
+    withdrawalAmount = 0, // Monthly withdrawal
+    expectedInterestRate = 0, // Return per annum
+    durationYears = 0, // Time period
   } = inputData;
 
   const [errors, setErrors] = useState({});
-  const [totalInvested, setTotalInvested] = useState(0);
-  const [futureValue, setFutureValue] = useState(0);
-  const [earnings, setEarnings] = useState(0);
+  const [totalWithdrawn, setTotalWithdrawn] = useState(0);
+  const [finalValue, setFinalValue] = useState(0);
 
   useEffect(() => {
     const newErrors = {};
-    if (investmentAmount < 0 || investmentAmount > 1000000)
-      newErrors.investmentAmount = 'Value between 0-1,000,000';
+    if (investmentAmount < 0 || investmentAmount > 10000000)
+      newErrors.investmentAmount = 'Value between 0-10,000,000';
+    if (withdrawalAmount < 0 || withdrawalAmount > 500000)
+      newErrors.withdrawalAmount = 'Value between 0-500,000';
     if (expectedInterestRate < 0 || expectedInterestRate > 30)
       newErrors.expectedInterestRate = 'Value between 0-30';
     if (durationYears < 0 || durationYears > 50)
@@ -49,32 +51,32 @@ const SIPCalculator = ({
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length > 0 || durationYears === 0 || investmentAmount === 0) {
-      setTotalInvested(0);
-      setFutureValue(0);
-      setEarnings(0);
+      setTotalWithdrawn(0);
+      setFinalValue(0);
       return;
     }
 
-    // Logic for Monthly SIP
-    const P = investmentAmount; // Monthly Investment
-    const r = expectedInterestRate / 100 / 12; // Monthly interest rate
+    // SWP Calculation Logic
+    const P = investmentAmount;
+    const W = withdrawalAmount;
+    const i = expectedInterestRate / 100 / 12; // Monthly interest
     const n = durationYears * 12; // Total months
 
-    // Future Value Formula: M = P × ({[1 + i]^n – 1} / i) × (1 + i)
-    const fv = P * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
-    const totalP = P * n;
+    // Remaining Balance Formula: 
+    // FV = P(1+i)^n - W[((1+i)^n - 1) / i]
+    const fv = (P * Math.pow(1 + i, n)) - (W * (Math.pow(1 + i, n) - 1) / i);
+    const withdrawn = W * n;
 
-    setTotalInvested(totalP);
-    setFutureValue(fv);
-    setEarnings(fv - totalP);
+    setTotalWithdrawn(withdrawn);
+    setFinalValue(fv > 0 ? fv : 0); // Balance cannot be negative
 
-  }, [investmentAmount, expectedInterestRate, durationYears]);
+  }, [investmentAmount, withdrawalAmount, expectedInterestRate, durationYears]);
 
   const chartData = {
-    labels: ['Invested Amount', 'Your Earnings'],
+    labels: ['Total Withdrawal', 'Final Value'],
     datasets: [
       {
-        data: [totalInvested, earnings > 0 ? earnings : 0],
+        data: [totalWithdrawn, finalValue > 0 ? finalValue : 0],
         backgroundColor: ['#fb923c', '#2563eb'],
         hoverBackgroundColor: ['#f97316', '#1e40af'],
       }
@@ -86,34 +88,44 @@ const SIPCalculator = ({
       <div className={`${WHITE_CARD} ${BORDER_RADIUS} shadow p-6 space-y-8`}>
         {[
           {
-            label: "Monthly Investment (Rs.)",
+            label: "Total Investment (Rs.)",
             name: "investmentAmount",
             value: investmentAmount,
             min: 0,
-            max: 1000000,
-            step: 500,
+            max: 10000000,
+            step: 10000,
             error: errors.investmentAmount,
-            tooltip: "The amount you plan to invest every month.",
+            tooltip: "The total amount you are investing initially.",
           },
           {
-            label: "Expected Interest Rate (%)",
+            label: "Withdrawal Per Month (Rs.)",
+            name: "withdrawalAmount",
+            value: withdrawalAmount,
+            min: 0,
+            max: 500000,
+            step: 500,
+            error: errors.withdrawalAmount,
+            tooltip: "The amount you wish to withdraw every month.",
+          },
+          {
+            label: "Expected Return Rate (%)",
             name: "expectedInterestRate",
             value: expectedInterestRate,
             min: 0,
             max: 30,
             step: 0.1,
             error: errors.expectedInterestRate,
-            tooltip: "Expected yearly return rate (e.g., 12% for equity mutual funds).",
+            tooltip: "Expected annual return rate on the remaining balance.",
           },
           {
-            label: "Duration (years)",
+            label: "Time Period (years)",
             name: "durationYears",
             value: durationYears,
             min: 0,
             max: 50,
             step: 1,
             error: errors.durationYears,
-            tooltip: "Duration for which you will continue the SIP.",
+            tooltip: "The duration for which you want to withdraw money.",
           }
         ].map(({ label, name, value, min, max, step, error, tooltip }) => (
           <div key={name}>
@@ -157,28 +169,25 @@ const SIPCalculator = ({
       <h3 className={`${BLUE} text-xl font-bold`}>Your Results</h3>
       <div className="grid grid-cols-2 gap-6 text-lg">
         <div>
-          <span className="block text-blue-800 font-medium mb-1">Monthly SIP</span>
-          <span>₹ {investmentAmount.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
+          <span className="block text-blue-800 font-medium mb-1">Total Investment</span>
+          <span>₹ {investmentAmount.toLocaleString()}</span>
         </div>
         <div>
-          <span className="block text-blue-800 font-medium mb-1">Expected Return</span>
-          <span>{expectedInterestRate.toFixed(1)}%</span>
+          <span className="block text-blue-800 font-medium mb-1">Total Withdrawal</span>
+          <span className="text-orange-600">₹ {totalWithdrawn.toLocaleString()}</span>
         </div>
         <div>
           <span className="block text-blue-800 font-medium mb-1">Duration</span>
           <span>{durationYears} years</span>
         </div>
         <div>
-          <span className="block text-blue-800 font-medium mb-1">Your Investment</span>
-          <span>₹ {totalInvested.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
+          <span className="block text-blue-800 font-medium mb-1">Final Value</span>
+          <span className="text-blue-600">₹ {Math.round(finalValue).toLocaleString()}</span>
         </div>
-        <div>
-          <span className="block text-blue-800 font-medium mb-1">Your Earnings</span>
-          <span className="text-blue-600">₹ {earnings.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
-        </div>
-        <div>
-          <span className="block text-blue-800 font-medium mb-1">Total Value</span>
-          <span>₹ {futureValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
+        <div className="col-span-2">
+          <p className="text-sm font-normal italic text-blue-700">
+            *This is the estimated balance left in your account after all withdrawals.
+          </p>
         </div>
       </div>
       <div className="max-w-xs mx-auto">
@@ -188,4 +197,4 @@ const SIPCalculator = ({
   );
 };
 
-export default SIPCalculator;
+export default SWPCalculator;

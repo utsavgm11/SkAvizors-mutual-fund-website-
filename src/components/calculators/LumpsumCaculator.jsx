@@ -20,7 +20,7 @@ function Tooltip({ text }) {
   );
 }
 
-const SIPCalculator = ({
+const LumpsumCalculator = ({
   inputMode,
   inputData = {},
   onInputChange,
@@ -28,20 +28,19 @@ const SIPCalculator = ({
   accentColor = "text-orange-500"
 }) => {
   const {
-    investmentAmount = 0, // Now treated as Monthly SIP
+    investmentAmount = 0, // Total one-time investment
     expectedInterestRate = 0,
     durationYears = 0,
   } = inputData;
 
   const [errors, setErrors] = useState({});
-  const [totalInvested, setTotalInvested] = useState(0);
   const [futureValue, setFutureValue] = useState(0);
   const [earnings, setEarnings] = useState(0);
 
   useEffect(() => {
     const newErrors = {};
-    if (investmentAmount < 0 || investmentAmount > 1000000)
-      newErrors.investmentAmount = 'Value between 0-1,000,000';
+    if (investmentAmount < 0 || investmentAmount > 10000000)
+      newErrors.investmentAmount = 'Value between 0-10,000,000';
     if (expectedInterestRate < 0 || expectedInterestRate > 30)
       newErrors.expectedInterestRate = 'Value between 0-30';
     if (durationYears < 0 || durationYears > 50)
@@ -49,24 +48,20 @@ const SIPCalculator = ({
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length > 0 || durationYears === 0 || investmentAmount === 0) {
-      setTotalInvested(0);
       setFutureValue(0);
       setEarnings(0);
       return;
     }
 
-    // Logic for Monthly SIP
-    const P = investmentAmount; // Monthly Investment
-    const r = expectedInterestRate / 100 / 12; // Monthly interest rate
-    const n = durationYears * 12; // Total months
+    // Lumpsum Calculation Logic: FV = P * (1 + r)^n
+    const P = investmentAmount;
+    const r = expectedInterestRate / 100; // Annual rate
+    const n = durationYears;
 
-    // Future Value Formula: M = P × ({[1 + i]^n – 1} / i) × (1 + i)
-    const fv = P * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
-    const totalP = P * n;
+    const fv = P * Math.pow((1 + r), n);
 
-    setTotalInvested(totalP);
     setFutureValue(fv);
-    setEarnings(fv - totalP);
+    setEarnings(fv - P);
 
   }, [investmentAmount, expectedInterestRate, durationYears]);
 
@@ -74,7 +69,7 @@ const SIPCalculator = ({
     labels: ['Invested Amount', 'Your Earnings'],
     datasets: [
       {
-        data: [totalInvested, earnings > 0 ? earnings : 0],
+        data: [investmentAmount, earnings > 0 ? earnings : 0],
         backgroundColor: ['#fb923c', '#2563eb'],
         hoverBackgroundColor: ['#f97316', '#1e40af'],
       }
@@ -86,14 +81,14 @@ const SIPCalculator = ({
       <div className={`${WHITE_CARD} ${BORDER_RADIUS} shadow p-6 space-y-8`}>
         {[
           {
-            label: "Monthly Investment (Rs.)",
+            label: "Total Investment (Rs.)",
             name: "investmentAmount",
             value: investmentAmount,
             min: 0,
-            max: 1000000,
-            step: 500,
+            max: 10000000,
+            step: 5000,
             error: errors.investmentAmount,
-            tooltip: "The amount you plan to invest every month.",
+            tooltip: "The total one-time amount you want to invest.",
           },
           {
             label: "Expected Interest Rate (%)",
@@ -103,7 +98,7 @@ const SIPCalculator = ({
             max: 30,
             step: 0.1,
             error: errors.expectedInterestRate,
-            tooltip: "Expected yearly return rate (e.g., 12% for equity mutual funds).",
+            tooltip: "Expected annual return rate on your investment.",
           },
           {
             label: "Duration (years)",
@@ -113,7 +108,7 @@ const SIPCalculator = ({
             max: 50,
             step: 1,
             error: errors.durationYears,
-            tooltip: "Duration for which you will continue the SIP.",
+            tooltip: "Duration for which you will stay invested.",
           }
         ].map(({ label, name, value, min, max, step, error, tooltip }) => (
           <div key={name}>
@@ -157,7 +152,7 @@ const SIPCalculator = ({
       <h3 className={`${BLUE} text-xl font-bold`}>Your Results</h3>
       <div className="grid grid-cols-2 gap-6 text-lg">
         <div>
-          <span className="block text-blue-800 font-medium mb-1">Monthly SIP</span>
+          <span className="block text-blue-800 font-medium mb-1">Total Investment</span>
           <span>₹ {investmentAmount.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
         </div>
         <div>
@@ -169,16 +164,12 @@ const SIPCalculator = ({
           <span>{durationYears} years</span>
         </div>
         <div>
-          <span className="block text-blue-800 font-medium mb-1">Your Investment</span>
-          <span>₹ {totalInvested.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
-        </div>
-        <div>
           <span className="block text-blue-800 font-medium mb-1">Your Earnings</span>
           <span className="text-blue-600">₹ {earnings.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
         </div>
-        <div>
+        <div className="col-span-2">
           <span className="block text-blue-800 font-medium mb-1">Total Value</span>
-          <span>₹ {futureValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
+          <span className="text-xl">₹ {futureValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
         </div>
       </div>
       <div className="max-w-xs mx-auto">
@@ -188,4 +179,4 @@ const SIPCalculator = ({
   );
 };
 
-export default SIPCalculator;
+export default LumpsumCalculator;

@@ -5,7 +5,7 @@ import CountUp from 'react-countup'
 
 const stats = [
   { label: "Happy Clients", value: 300 },
-  { label: "Active Mutual Fund Folios", value: 1000 },
+  { label: "Active Mutual Fund Folios", value: 1250 },
   { label: "Referral Rate", value: 60 },
   { label: "Years of Experience", value: 7 },
 ]
