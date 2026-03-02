@@ -85,7 +85,7 @@ const About = () => {
             Empowering Financial Growth with Trust, Strategy, and Results. At S K Advizors, financial advice is about building trust and enabling confident steps toward financial goals. Founded by{' '}
             <span className="font-semibold text-orange-600">Shrikant Krishna</span> in 2018, we’ve grown to manage{' '}
             <span className="text-blue-700 font-bold">300+ clients</span> and more than{' '}
-            <span className="font-bold text-orange-600">1000 active mutual fund folios</span>. Our mission is to deliver unbiased, strategic financial guidance — helping clients build and protect long-term wealth with personalized, practical solutions. Together, we’ll grow your wealth with clarity, trust, and results.
+            <span className="font-bold text-orange-600">1250 active mutual fund folios</span>. Our mission is to deliver unbiased, strategic financial guidance — helping clients build and protect long-term wealth with personalized, practical solutions. Together, we’ll grow your wealth with clarity, trust, and results.
           </motion.p>
 
           <motion.div

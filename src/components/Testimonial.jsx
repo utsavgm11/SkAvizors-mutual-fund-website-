@@ -38,11 +38,11 @@ const testimonials = [
       "Shrikant introduced me to mutual funds and SIPs and helped me choose the right investments for my goals. He is responsive and always provides the data needed to make informed decisions.",
   },
   {
-    img: "/assets/img/testimonials/testimonials-5.jpg",
-    name: "John Larson",
-    role: "Home Improvement Expert",
+    img: "/images/testimonials-5.jpeg",
+    name: " Anurag Lilha",
+    role: "Manager Technical",
     text:
-      "From data analysis to visual storytelling, everything was on point. The story section clearly communicates how renovation impacts property value.",
+      "Highly recommend Srikanth Krishna for his expert financial guidance. He manages our investments—from short-term opportunities to long-term planning—with clarity and precision. Truly a trusted partner for our financial needs.",
   },
 ];
 

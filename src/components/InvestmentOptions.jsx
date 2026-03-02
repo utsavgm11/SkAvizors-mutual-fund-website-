@@ -50,20 +50,7 @@ const options = [
         image: "/images/bonds.webp",
         link: "/investment-options/bonds",
     },
-    {
-        id: 7,
-        title: "Smallcase",
-        description: "Curated stock portfolios built around themes and market trends.",
-        image: "/images/Small case.jpg",
-        link: "/investment-options/smallcase",
-    },
-    {
-        id: 8,
-        title: "Liquiloans",
-        description: "Innovative lending products with attractive fixed returns.",
-        image: "/images/Liquiloans.webp",
-        link: "/investment-options/liquiloans",
-    },
+    
 ];
 
 const fadeUpAnimation = {
@@ -150,7 +137,7 @@ const InvestmentOptions = () => {
             </p>
 
             {/* Desktop grid */}
-            <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-3 gap-8">
                 {options.map(({ id, title, description, image, link }) => (
                     <motion.div
                         key={id}
