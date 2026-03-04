@@ -10,7 +10,7 @@ const IconHome = (props) => (
   <img src="/images/home.svg" alt="Home" className={props.className} draggable={false} />
 );
 const IconMail = (props) => (
-  <img src="/images/contact.svg" alt="Contact" className={props.className} draggable={false} />
+  <img src="/images/mail.svg" alt="Contact" className={props.className} draggable={false} />
 );
 const IconWhatsApp = (props) => (
   <img src="/images/whatsapp.svg" alt="WhatsApp" className={props.className} draggable={false} />
@@ -41,7 +41,7 @@ const faqs = [
     { question: "What is the difference between wealth management and investment management?", answer: "Investment management mainly focuses on selecting and managing financial products like stocks, mutual funds, or bonds. Wealth management, on the other hand, is a holistic service that covers your entire financial life—including investments, tax planning, estate planning, retirement strategies, and risk management." },
     { question: "Who should consider wealth management services?", answer: "Wealth management is best suited for high-net-worth individuals, families, and business owners who have multiple assets, income sources, and financial goals. If managing your finances feels complex or you want a structured long-term strategy, wealth management is right for you." },
     { question: "How does SK Advizors create a Wealth Basket for me?", answer: "We begin by understanding your financial goals, risk appetite, and current portfolio. Based on this, we design a customized Wealth Basket that includes the right mix of investments, tax strategies, estate planning, and cash flow solutions. It’s a personalized roadmap for your wealth journey." },
-    { question: "What products are included in wealth management?", answer: "Our Wealth Basket can include a wide range of products and services such as mutual funds, PMS, AIF, direct equity, bonds, fixed deposits, smallcase, liquiloans, and insurance solutions, depending on your profile and goals." },
+    { question: "What products are included in wealth management?", answer: "Our Wealth Basket can include a wide range of products and services such as mutual funds, PMS, AIF, direct equity, bonds, fixed deposits and insurance solutions, depending on your profile and goals." },
     { question: "Is wealth management only for the ultra-rich?", answer: "No. While wealth management traditionally focuses on high-net-worth individuals, anyone with significant assets, business interests, or long-term financial goals can benefit. The earlier you start, the better the results." },
     { question: "How often should my Wealth Basket be reviewed?", answer: "We recommend reviewing your portfolio at least once or twice a year, or whenever there are major life changes (marriage, business expansion, inheritance, retirement, etc.) or significant market shifts. At SK Advizors, we provide regular reviews and updates to keep your plan on track." },
     { question: "What are the benefits of wealth management beyond investments?", answer: "Wealth management provides clarity and peace of mind. Beyond just investments, it ensures: Your wealth grows tax-efficiently; Your family’s financial future is secured through estate planning; Your retirement needs are fully covered; Your risks are managed smartly with insurance and diversification." },

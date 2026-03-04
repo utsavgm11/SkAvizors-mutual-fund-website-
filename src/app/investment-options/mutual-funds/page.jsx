@@ -158,9 +158,9 @@ const MutualFundPlanningPage = () => {
                                     <span className="text-green-600 mr-2 text-xl">💹</span> Equity Fund Tax Rules
                                 </h4>
                                 <p className="text-sm text-gray-700">
-                                    **Short-Term (Held &lt; 1 year):** 15% tax on gains.
+                                    **Short-Term (Held &lt; 1 year):** 20% tax on gains.
                                     <br />
-                                    **Long-Term (Held &gt; 1 year):** 10% tax on gains above ₹1 lakh per year.
+                                    **Long-Term (Held &gt; 1 year):** 12.5% tax on gains above ₹1 lakh per year.
                                 </p>
                             </div>
                             <div className="p-5 border-l-4 border-blue-500 bg-blue-50 rounded-lg shadow-md">
@@ -168,9 +168,9 @@ const MutualFundPlanningPage = () => {
                                     <span className="text-blue-600 mr-2 text-xl">📘</span> Debt Fund Tax Rules
                                 </h4>
                                 <p className="text-sm text-gray-700">
-                                    **Short-Term (Held &lt; 3 years):** Taxed as per your income tax slab.
+                                    **Short-Term (Held &lt; 2 years):** Taxed as per your income tax slab.
                                     <br />
-                                    **Long-Term (Held &gt; 3 years):** 20% tax with the benefit of **indexation** (inflation-adjusted).
+                                    **Long-Term (Held &gt; 2 years):** 20% tax with the benefit of **indexation** (inflation-adjusted).
                                 </p>
                             </div>
                         </div>

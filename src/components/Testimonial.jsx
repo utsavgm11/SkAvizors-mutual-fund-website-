@@ -28,7 +28,7 @@ const testimonials = [
     name: "Soundarya K",
     role: "Business Analyst",
     text:
-      "Excellent support and guidance on sip clear communication and smooth process always available for guidance ,Bangalore",
+      "Excellent support and guidance on sip clear communication and smooth process always available for guidance.",
   },
   {
     img: "/images/testimonials-4.png",
@@ -42,7 +42,7 @@ const testimonials = [
     name: " Anurag Lilha",
     role: "Manager Technical",
     text:
-      "Highly recommend Srikanth Krishna for his expert financial guidance. He manages our investments—from short-term opportunities to long-term planning—with clarity and precision. Truly a trusted partner for our financial needs.",
+      "Highly recommend Srikanth Krishna for expert financial guidance. He has managed our family’s investments—from short-term opportunities to long-term planning—with precision and valuable insights. A trusted partner for all our financial needs",
   },
 ];
 

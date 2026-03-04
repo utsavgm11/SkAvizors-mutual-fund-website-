@@ -19,7 +19,7 @@ const IconHome = (props) => (
 
 const IconMail = (props) => (
   <img
-    src="/images/contact.svg" // Using contact.svg as the mail/message icon
+    src="/images/mail.svg" // Using contact.svg as the mail/message icon
     alt="Contact"
     className={props.className}
     draggable={false}
@@ -56,7 +56,7 @@ const productTypes = [
 
 
 const faqs = [
-    { question: "What is an investment portfolio?", answer: "An investment portfolio is a collection of financial assets like mutual funds, insurance, PMS/AIF, direct equity, fixed deposits, bonds, smallcase, and liquiloans that are strategically selected to meet your financial goals while managing risk." },
+    { question: "What is an investment portfolio?", answer: "An investment portfolio is a collection of financial assets like mutual funds, insurance, PMS/AIF, direct equity, fixed deposits, bonds that are strategically selected to meet your financial goals while managing risk." },
     { question: "Why do I need a diversified investment portfolio?", answer: "Diversification reduces risk by spreading your investments across different asset classes. At SK Advizors, we ensure your portfolio balances growth, safety, and liquidity, so you’re not dependent on just one type of investment." },
     { question: "How do you decide which investments go into my portfolio?", answer: "We analyze your goals, risk appetite, and time horizon. Based on that, we recommend the right mix of investment options tailored for you—whether you want wealth creation, tax savings, or steady income." },
     { question: "How often should I review my portfolio?", answer: "A portfolio should ideally be reviewed at least once or twice a year, or when there’s a major life or market change. SK Advizors provides regular reviews and updates so your portfolio stays aligned with your goals." },
