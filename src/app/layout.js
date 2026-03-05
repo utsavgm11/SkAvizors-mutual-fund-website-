@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "SK Advizor",
-  description: "Professional financial advisory website",
+  title: "SK Advizors",
+  description: "Professional Financial Advisory ",
    icons: {
     icon: '/logo.png',    // path relative to public folder
     shortcut: '/logo.png', // optional
