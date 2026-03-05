@@ -42,7 +42,7 @@ const testimonials = [
     name: " Anurag Lilha",
     role: "Manager Technical",
     text:
-      "Highly recommend Srikanth Krishna for expert financial guidance. He has managed our family’s investments—from short-term opportunities to long-term planning—with precision and valuable insights. A trusted partner for all our financial needs",
+      "Highly recommend Srikant for expert financial guidance. He has managed our family’s investments—from short-term opportunities to long-term planning—with precision and valuable insights. A trusted partner for all our financial needs",
   },
 ];
 
