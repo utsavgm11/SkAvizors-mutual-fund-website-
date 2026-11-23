@@ -22,7 +22,7 @@ const Footer = () => {
     },
     {
       name: "LinkedIn",
-      href: "https://www.linkedin.com/in/shrikant-krishna-2a376a85/",
+      href: "https://www.linkedin.com/company/s-k-advizors/about/?viewAsMember=true",
       iconSrc: "/images/linkedin.svg",
     },
     {

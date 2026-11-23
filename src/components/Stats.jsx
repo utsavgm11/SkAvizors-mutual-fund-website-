@@ -7,7 +7,7 @@ const stats = [
   { label: "Happy Clients", value: 300 },
   { label: "Active Mutual Fund Folios", value: 1250 },
   { label: "Referral Rate", value: 60 },
-  { label: "Years of Experience", value: 7 },
+  { label: "Years of Experience", value: 8 },
 ]
 
 const Stats = () => {
